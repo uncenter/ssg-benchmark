@@ -1,8 +1,18 @@
-import { join } from "https://deno.land/std@0.98.0/path/mod.ts";
+import { join } from "@std/path";
 import generate from "./generator.ts";
 
+type RunnerOptions = {
+  name: string;
+  build: string[];
+  content: string;
+  output: string;
+};
+
 export default class Runner {
-  constructor(options = {}) {
+  options: RunnerOptions;
+  cwd: string;
+
+  constructor(options: RunnerOptions) {
     this.options = options;
     this.cwd = join(Deno.cwd(), "test", this.options.name);
   }
@@ -11,16 +21,16 @@ export default class Runner {
     return this.options.name;
   }
 
-  async generate(num) {
+  async generate(pages: number): Promise<void> {
     const path = join(this.cwd, this.options.content);
-    return generate(path, num);
+    await generate(path, pages);
   }
 
-  async build() {
-    return this.runCommand(this.options.build, this.cwd);
+  async build(): Promise<void> {
+    await this.exec(this.options.build, this.cwd);
   }
 
-  async clear() {
+  async clear(): Promise<void> {
     const path = join(this.cwd, this.options.output);
 
     try {
@@ -28,14 +38,13 @@ export default class Runner {
     } catch (err) {}
   }
 
-  async runCommand(cmd, cwd) {
-    const process = Deno.run({
-      cmd,
+  async exec(cmd: string[], cwd: string): Promise<void> {
+    const process = new Deno.Command(cmd.at(0)!, {
+      args: cmd.slice(1) || [],
       cwd,
       stdout: "null",
     });
 
-    await process.status();
-    process.close();
+    await process.output();
   }
 }

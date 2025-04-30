@@ -1,10 +1,22 @@
 {
   "version": "4",
+  "specifiers": {
+    "jsr:@std/path@^1.0.9": "1.0.9",
+    "npm:tinybench@^4.0.1": "4.0.1"
+  },
+  "jsr": {
+    "@std/path@1.0.9": {
+      "integrity": "260a49f11edd3db93dd38350bf9cd1b4d1366afa98e81b86167b4e3dd750129e"
+    }
+  },
+  "npm": {
+    "tinybench@4.0.1": {
+      "integrity": "sha512-Nb1srn7dvzkVx0J5h1vq8f48e3TIcbrS7e/UfAI/cDSef/n8yLh4zsAEsFkfpw6auTY+ZaspEvam/xs8nMnotQ=="
+    }
+  },
   "remote": {
     "https://deno.land/std@0.98.0/_util/assert.ts": "2f868145a042a11d5ad0a3c748dcf580add8a0dbc0e876eaa0026303a5488f58",
-    "https://deno.land/std@0.98.0/_util/deep_assign.ts": "c37634ccc602a3e8de88dbe2f3137e01c82a028ac43baab00bd19c6d15f31f70",
     "https://deno.land/std@0.98.0/_util/os.ts": "e282950a0eaa96760c0cf11e7463e66babd15ec9157d4c9ed49cc0925686f6a7",
-    "https://deno.land/std@0.98.0/flags/mod.ts": "0994240ad009980e46bc3bb1314e9469c7241617e4345b27afc82097fdbef841",
     "https://deno.land/std@0.98.0/fs/_util.ts": "f2ce811350236ea8c28450ed822a5f42a0892316515b1cd61321dec13569c56b",
     "https://deno.land/std@0.98.0/fs/copy.ts": "631bbafbfe6cba282158abc8aeb7e8251cc69a7ec28ce12878ea1b75fec2add4",
     "https://deno.land/std@0.98.0/fs/empty_dir.ts": "5f08b263dd064dc7917c4bbeb13de0f5505a664b9cdfe312fa86e7518cfaeb84",
@@ -26,7 +38,12 @@
     "https://deno.land/std@0.98.0/path/mod.ts": "4465dc494f271b02569edbb4a18d727063b5dbd6ed84283ff906260970a15d12",
     "https://deno.land/std@0.98.0/path/posix.ts": "f56c3c99feb47f30a40ce9d252ef6f00296fa7c0fcb6dd81211bdb3b8b99ca3b",
     "https://deno.land/std@0.98.0/path/separator.ts": "8fdcf289b1b76fd726a508f57d3370ca029ae6976fcde5044007f062e643ff1c",
-    "https://deno.land/std@0.98.0/path/win32.ts": "77f7b3604e0de40f3a7c698e8a79e7f601dc187035a1c21cb1e596666ce112f8",
-    "https://deno.land/std@0.98.0/testing/bench.ts": "d41a7f900adc687e85690a634d477d36fe868a2b0211c54d56b0a563ae30bea3"
+    "https://deno.land/std@0.98.0/path/win32.ts": "77f7b3604e0de40f3a7c698e8a79e7f601dc187035a1c21cb1e596666ce112f8"
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@std/path@^1.0.9",
+      "npm:tinybench@^4.0.1"
+    ]
   }
 }

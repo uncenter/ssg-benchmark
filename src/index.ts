@@ -1,80 +1,25 @@
-import { parse } from "https://deno.land/std@0.98.0/flags/mod.ts";
-import {
-  bench,
-  runBenchmarks,
-} from "https://deno.land/std@0.98.0/testing/bench.ts";
 import runners from "./config.ts";
+import { Bench } from "tinybench";
 
-async function cli(args) {
-  const options = parse(args, {
-    default: {
-      pages: 1000,
-      runs: 10,
-    },
-  });
+const PAGE_VARIATIONS = [10, 100, 1000, 10000];
 
-  const command = options._[0];
+for (const pages of PAGE_VARIATIONS) {
+  const bench = new Bench({ name: pages + " pages", iterations: 10 });
 
-  //Only build
-  if (command === "build") {
-    for (const runner of runners) {
-      console.log("Building", runner.name);
-      await runner.clear();
-      await runner.build();
-    }
-    return;
-  }
-
-  //Only generate
-  if (command === "generate") {
-    for (const runner of runners) {
-      console.log("Generating", runner.name);
-      await runner.generate(options.pages);
-    }
-    return;
-  }
-
-  //Bench
   for (const runner of runners) {
-    await runner.generate(options.pages);
-
-    bench({
-      name: runner.name,
-      runs: options.runs,
-      async func(b) {
+    bench.add(runner.name, async () => {
+      await runner.build();
+    }, {
+      beforeEach: async () => {
         await runner.clear();
-        b.start();
-        await runner.build();
-        b.stop();
+      },
+      beforeAll: async () => {
+        await runner.generate(pages);
       },
     });
   }
 
-  const results = await runBenchmarks();
+  await bench.run();
 
-  console.log("");
-  console.log(`SITES WITH ${options.pages} PAGES:`);
-  console.log(`(${options.runs} runs)`);
-  console.log("");
-
-  const final = results.results.map((res) => ({
-    name: res.name,
-    seconds: Math.round(res.measuredRunsAvgMs) / 1000,
-  }));
-
-  final.sort((a, b) => a.seconds - b.seconds);
-
-  const slower = final[final.length - 1].seconds;
-
-  final.forEach((data) => {
-    const percentage = Math.round((data.seconds / slower) * 10);
-    data.duration = "▓".repeat(percentage) + "░".repeat(10 - percentage);
-  })
-
-  console.table(final);
-  console.log("");
-}
-
-if (import.meta.main) {
-  cli(Deno.args);
+  console.log(bench.name);
 }

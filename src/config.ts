@@ -1,6 +1,6 @@
 import Runner from "./runner.ts";
 
-const runners = new Set();
+const runners: Set<Runner> = new Set();
 
 runners.add(
   new Runner({

@@ -63,10 +63,10 @@ const WORDS = [
   "voluptate",
 ];
 
-function random(min, max) {
+function random(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
-function randomArray(min, max) {
+function randomArray(min: number, max: number) {
   const length = random(min, max);
   return new Array(length).fill(null);
 }

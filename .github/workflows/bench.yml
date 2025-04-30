@@ -39,8 +39,8 @@ jobs:
 
     - name: Run the benchmarks
       run: |
-        deno run --unstable -A cli.js --pages 1
-        deno run --unstable -A cli.js --pages 10
-        deno run --unstable -A cli.js --pages 100
-        deno run --unstable -A cli.js --pages 1000
-        deno run --unstable -A cli.js --pages 10000
+        deno run -A cli.js --pages 1
+        deno run -A cli.js --pages 10
+        deno run -A cli.js --pages 100
+        deno run -A cli.js --pages 1000
+        deno run -A cli.js --pages 10000

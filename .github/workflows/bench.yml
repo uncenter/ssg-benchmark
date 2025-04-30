@@ -20,7 +20,6 @@ jobs:
       with:
         ruby-version: 3.4.3
         working-directory: ssg/jekyll
-        bundler-cache: true
 
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2

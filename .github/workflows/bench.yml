@@ -18,7 +18,7 @@ jobs:
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.6
+        ruby-version: 3.4.3
         working-directory: ssg/jekyll
         bundler-cache: true
 

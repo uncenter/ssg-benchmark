@@ -5,7 +5,7 @@ const runners = new Set();
 runners.add(
   new Runner({
     name: "lume",
-    build: ["deno run -A https://deno.land/x/lume/cli.ts"],
+    build: ["deno", "task", "build"],
     content: "pages",
     output: "_site",
   }),

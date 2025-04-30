@@ -34,7 +34,7 @@ jobs:
 
     - name: Install lume
       run: |
-        deno run -A https://deno.land/x/lume/install.js
+        deno install --allow-run --allow-env --allow-read --name lume --force --reload --global https://deno.land/x/lume_cli/mod.ts
 
     - name: Run the benchmarks
       run: |

@@ -9,30 +9,27 @@ jobs:
     name: Run
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@master
-
-    - name: Setup Node
-      uses: actions/setup-node@v2
-    - name: Setup Deno
-      uses: denoland/setup-deno@v2
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.4.3
-        working-directory: ssg/jekyll
+    - uses: actions/checkout@v4
+    - uses: denoland/setup-deno@v2
 
     - name: Install Hugo
       uses: peaceiris/actions-hugo@v2
 
+    - name: Setup Node
+      uses: actions/setup-node@v2
     - name: Install Eleventy
       run: |
-        cd ssg/eleventy
+        cd test/eleventy
         npm install
 
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.4.3
+        working-directory: test/jekyll
     - name: Install Jekyll
       run: |
-        cd ssg/jekyll
+        cd test/jekyll
         bundle install
 
     - name: Bench

@@ -32,9 +32,10 @@ jobs:
         cd ssg/eleventy
         npm install
 
-    - name: Install lume
+    - name: Install jeykll
       run: |
-        deno install --allow-run --allow-env --allow-read --name lume --force --reload --global https://deno.land/x/lume_cli/mod.ts
+        cd ssg/jeykll
+        bundle install
 
     - name: Run the benchmarks
       run: |

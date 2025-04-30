@@ -22,4 +22,16 @@ for (const pages of PAGE_VARIATIONS) {
   await bench.run();
 
   console.log(bench.name);
+  console.table(bench.table(({ name, result }) => {
+    const { latency } = result!;
+
+    return {
+      "Name": name,
+      "Mean (ms)": `${latency.mean.toFixed(2)} \xb1 ${latency.rme.toFixed(2)}%`,
+      "Median (ms)": `${latency.p50!.toFixed(2)} \xb1 ${
+        latency.mad!.toFixed(2)
+      }`,
+      "Samples": latency.samples.length,
+    };
+  }));
 }

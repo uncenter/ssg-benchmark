@@ -12,7 +12,7 @@ export const RUNNERS: Set<Runner> = new Set([
   }),
   new Runner({
     name: "eleventy",
-    build: ["npm", "run", "build"],
+    build: ["node", "./node_modules/.bin/eleventy"],
     content: "pages",
     output: "_site",
   }),

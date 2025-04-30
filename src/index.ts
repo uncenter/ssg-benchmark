@@ -3,7 +3,7 @@ import {
   bench,
   runBenchmarks,
 } from "https://deno.land/std@0.98.0/testing/bench.ts";
-import runners from "./config.js";
+import runners from "./config.ts";
 
 async function cli(args) {
   const options = parse(args, {

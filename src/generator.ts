@@ -1,6 +1,6 @@
 import { ensureDir, expandGlob } from "https://deno.land/std@0.98.0/fs/mod.ts";
 import { join } from "https://deno.land/std@0.98.0/path/mod.ts";
-import { article, sentence } from "./lorem-ipsum.js";
+import { article, sentence } from "./lorem-ipsum.ts";
 
 export default async function generate(path, numPages = 1) {
   await ensureDir(path);

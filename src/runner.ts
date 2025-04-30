@@ -1,10 +1,10 @@
 import { join } from "https://deno.land/std@0.98.0/path/mod.ts";
-import generate from "./generator.js";
+import generate from "./generator.ts";
 
 export default class Runner {
   constructor(options = {}) {
     this.options = options;
-    this.cwd = join(Deno.cwd(), "ssg", this.options.name);
+    this.cwd = join(Deno.cwd(), "test", this.options.name);
   }
 
   get name() {

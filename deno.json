@@ -1,0 +1,7 @@
+{
+  "tasks": {
+    "bench": "deno run -A src/index.ts"
+  },
+  "imports": {
+  }
+}

@@ -1,12 +1,10 @@
-import runners from "./config.ts";
+import { ITERATIONS, PAGE_VARIATIONS, RUNNERS } from "./config.ts";
 import { Bench } from "tinybench";
 
-const PAGE_VARIATIONS = [10, 100, 1000, 10000];
-
 for (const pages of PAGE_VARIATIONS) {
-  const bench = new Bench({ name: pages + " pages", iterations: 10 });
+  const bench = new Bench({ name: pages + " pages", iterations: ITERATIONS });
 
-  for (const runner of runners) {
+  for (const runner of RUNNERS) {
     bench.add(runner.name, async () => {
       await runner.build();
     }, {

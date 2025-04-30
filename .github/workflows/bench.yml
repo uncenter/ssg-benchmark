@@ -32,9 +32,9 @@ jobs:
         cd ssg/eleventy
         npm install
 
-    - name: Install jeykll
+    - name: Install jekyll
       run: |
-        cd ssg/jeykll
+        cd ssg/jekyll
         bundle install
 
     - name: Run the benchmarks

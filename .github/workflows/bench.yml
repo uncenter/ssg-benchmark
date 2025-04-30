@@ -14,33 +14,27 @@ jobs:
 
     - name: Setup Node
       uses: actions/setup-node@v2
-
+    - name: Setup Deno
+      uses: denoland/setup-deno@v2
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 3.4.3
         working-directory: ssg/jekyll
 
-    - name: Setup Hugo
+    - name: Install Hugo
       uses: peaceiris/actions-hugo@v2
 
-    - name: Setup Deno
-      uses: denoland/setup-deno@v2
-
-    - name: Install eleventy
+    - name: Install Eleventy
       run: |
         cd ssg/eleventy
         npm install
 
-    - name: Install jekyll
+    - name: Install Jekyll
       run: |
         cd ssg/jekyll
         bundle install
 
-    - name: Run the benchmarks
+    - name: Bench
       run: |
-        deno run -A cli.js --pages 1
-        deno run -A cli.js --pages 10
-        deno run -A cli.js --pages 100
-        deno run -A cli.js --pages 1000
-        deno run -A cli.js --pages 10000
+        deno task bench

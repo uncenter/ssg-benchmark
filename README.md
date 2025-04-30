@@ -1,24 +1,16 @@
-# Static site generators comparison
+# Static Site Generators Benchmark
 
-Benchmark for Lume static site generator and comparison with other generators.
+Benchmark comparing the following static site generators (SSGs):
 
-## Instructions
+- [Lume](https://lumeland.github.io/) (Deno)
+- [Eleventy](https://www.11ty.dev/) (Node)
+- [Jekyll](https://jekyllrb.com/) (Ruby)
+- [Hugo](https://gohugo.io/) (Go)
 
-The directory `ssg` contains all static site generators to test. Make sure you have all installed:
+If you want to add/remove generators, or configure the variations of pages, or configure the iterations of each task, modify the constants in `src/config.ts`.
 
-- Lume (Deno) [See instructions](https://lumeland.github.io/)
-- Eleventy (Node) [See instructions](https://www.11ty.dev/)
-- Jekyll (Ruby) [See instructions](https://jekyllrb.com/)
-- Hugo (Go) [See instructions](https://gohugo.io/)
 
-If you want to add or remove any generator, edit the `config.js`.
-
-To test if all generators work fine, run `deno run --unstable -A cli.js --generate` to generate the content. Then you can go to the directory of every generator to test the build.
-
-To run the benchmark: `deno run --unstable -A cli.js`. You can add some options:
-
-- `--pages` To generate different number of pages. By default is `1000`.
-- `--runs` How many times are run every build in order to have more accurate and stable results. By default is `10`.
+To run the benchmark: `deno task bench`.
 
 ## Latest results
 

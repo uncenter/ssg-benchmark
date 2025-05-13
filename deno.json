@@ -4,6 +4,10 @@
   },
   "imports": {
     "@std/path": "jsr:@std/path@^1.0.9",
-    "tinybench": "npm:tinybench@^4.0.1"
+    "nano-spawn": "npm:nano-spawn@^1.0.1"
+  },
+  "fmt": {
+    "exclude": ["test/"],
+    "proseWrap": "never"
   }
 }

@@ -2,7 +2,7 @@
   "version": "4",
   "specifiers": {
     "jsr:@std/path@^1.0.9": "1.0.9",
-    "npm:tinybench@^4.0.1": "4.0.1"
+    "npm:nano-spawn@^1.0.1": "1.0.1"
   },
   "jsr": {
     "@std/path@1.0.9": {
@@ -10,8 +10,8 @@
     }
   },
   "npm": {
-    "tinybench@4.0.1": {
-      "integrity": "sha512-Nb1srn7dvzkVx0J5h1vq8f48e3TIcbrS7e/UfAI/cDSef/n8yLh4zsAEsFkfpw6auTY+ZaspEvam/xs8nMnotQ=="
+    "nano-spawn@1.0.1": {
+      "integrity": "sha512-BfcvzBlUTxSDWfT+oH7vd6CbUV+rThLLHCIym/QO6GGLBsyVXleZs00fto2i2jzC/wPiBYk5jyOmpXWg4YopiA=="
     }
   },
   "remote": {
@@ -43,7 +43,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@std/path@^1.0.9",
-      "npm:tinybench@^4.0.1"
+      "npm:nano-spawn@^1.0.1"
     ]
   }
 }

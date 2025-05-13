@@ -9,29 +9,29 @@ jobs:
     name: Run
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: denoland/setup-deno@v2
+      - uses: actions/checkout@v4
+      - uses: denoland/setup-deno@v2
 
-    - name: Install Hugo
-      uses: peaceiris/actions-hugo@v2
+      - name: Install Hugo
+        uses: peaceiris/actions-hugo@v2
 
-    - name: Setup Node
-      uses: actions/setup-node@v2
-    - name: Install Eleventy
-      run: |
-        cd test/eleventy
-        npm install
+      - name: Setup Node
+        uses: actions/setup-node@v2
+      - name: Install Eleventy
+        run: |
+          cd test/eleventy
+          npm install
 
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.4.3
-        working-directory: test/jekyll
-    - name: Install Jekyll
-      run: |
-        cd test/jekyll
-        bundle install
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4.3
+          working-directory: test/jekyll
+      - name: Install Jekyll
+        run: |
+          cd test/jekyll
+          bundle install
 
-    - name: Bench
-      run: |
-        deno task bench
+      - name: Bench
+        run: |
+          deno task bench

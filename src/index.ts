@@ -91,7 +91,8 @@ type HyperfineResult = {
 };
 
 function formatResultsToMarkdown(results: Array<HyperfineResult>): string {
-  const fastest = results.reduce((a, b) => (a.mean < b.mean ? a : b));
+  const sorted = [...results].sort((a, b) => a.mean - b.mean);
+  const fastest = sorted[0];
 
   const cols = [
     "command",
@@ -103,7 +104,7 @@ function formatResultsToMarkdown(results: Array<HyperfineResult>): string {
   ];
   const header = `| ${cols.join(" | ")} |\n${"|---".repeat(cols.length)}|`;
 
-  const rows = results.map((result) => {
+  const rows = sorted.map((result) => {
     const isFastest = result === fastest;
     const rel = isFastest
       ? "-"

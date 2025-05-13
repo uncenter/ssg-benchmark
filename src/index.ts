@@ -22,18 +22,18 @@ const GENERATORS: Array<Generator> = [
     content: "pages",
     output: "_site",
   },
-    {
-      name: "jekyll",
-      build:"bundle exec jekyll build",
-      content: "_pages",
-      output: "_site",
-    },
-    {
-      name: "hugo",
-      build:"hugo -D",
-      content: "content/pages",
-      output: "public",
-    },
+  {
+    name: "jekyll",
+    build: "bundle exec jekyll build",
+    content: "_pages",
+    output: "_site",
+  },
+  {
+    name: "hugo",
+    build: "hugo -D",
+    content: "content/pages",
+    output: "public",
+  },
 ];
 
 const tempFilePath = await Deno.makeTempFile();

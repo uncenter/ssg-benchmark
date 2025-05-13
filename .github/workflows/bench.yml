@@ -32,6 +32,10 @@ jobs:
           cd test/jekyll
           bundle install
 
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: hyperfine
+
       - name: Bench
         run: |
           deno task bench
